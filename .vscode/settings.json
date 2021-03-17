@@ -1,5 +1,8 @@
 {
-    "files.associations": {
-        "optional": "cpp"
-    }
+"cmake.debugConfig": {
+    "cwd": "${workspaceFolder}"
+},
+"files.associations": {
+    "vector": "cpp"
 }
+} 
