@@ -3,6 +3,7 @@
     "cwd": "${workspaceFolder}"
 },
 "files.associations": {
-    "vector": "cpp"
+    "vector": "cpp",
+    "random": "cpp"
 }
 } 

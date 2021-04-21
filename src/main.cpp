@@ -100,13 +100,13 @@ int main(int arg,const char**argv)
 
     glfwSetWindowUserPointer(window, context.get());
 
-    ShaderPtr vertShader = Shader::CreateFromFile("./shader/simple.vs", GL_VERTEX_SHADER);
-    ShaderPtr fragShader = Shader::CreateFromFile("./shader/simple.fs", GL_FRAGMENT_SHADER);
-    SPDLOG_INFO("vertex shader id: {}", vertShader->Get());
-    SPDLOG_INFO("fragment shader id: {}", fragShader->Get());
+    // ShaderPtr vertShader = Shader::CreateFromFile("./shader/simple.vs", GL_VERTEX_SHADER);
+    // ShaderPtr fragShader = Shader::CreateFromFile("./shader/simple.fs", GL_FRAGMENT_SHADER);
+    // SPDLOG_INFO("vertex shader id: {}", vertShader->Get());
+    // SPDLOG_INFO("fragment shader id: {}", fragShader->Get());
 
-    auto program = Program::Create({fragShader, vertShader});
-    SPDLOG_INFO("program id: {}", program->Get());
+    //auto program = Program::Create({fragShader, vertShader});
+    //SPDLOG_INFO("program id: {}", program->Get());
 
     OnFramebufferSizeChange(window, WINDOW_WIDTH, WINDOW_HEIGHT);
     glfwSetFramebufferSizeCallback(window, OnFramebufferSizeChange);

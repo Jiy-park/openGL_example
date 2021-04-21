@@ -104,20 +104,18 @@ bool Context::Init(){
 };
 
     uint32_t indices[] = {
-      0,  2,  1,  2,  0,  3,
-      4,  5,  6,  6,  7,  4,
-      8,  9, 10, 10, 11,  8,
-     12, 14, 13, 14, 12, 15,
-     16, 17, 18, 18, 19, 16,
-     20, 22, 21, 22, 20, 23,
+         0,  2,  1,  2,  0,  3,
+         4,  5,  6,  6,  7,  4,
+         8,  9, 10, 10, 11,  8,
+        12, 14, 13, 14, 12, 15,
+        16, 17, 18, 18, 19, 16,
+        20, 22, 21, 22, 20, 23,
 };
     m_vertexLayout = VertexLayout::Create();
     m_vertexBuffer=Buffer::CreateWithData(GL_ARRAY_BUFFER,GL_STATIC_DRAW,vertices,sizeof(float)*120);
 
-    //m_vertexLayout->SetAttrib(0,3,GL_FLOAT,GL_FALSE,sizeof(float)*3,0);
-    m_vertexLayout->SetAttrib(0, 3, GL_FLOAT, GL_FALSE,  sizeof(float) * 5, 0);                          
-    //m_vertexLayout->SetAttrib(1, 3, GL_FLOAT, GL_FALSE,sizeof(float) * 5, sizeof(float) * 3);
-    m_vertexLayout->SetAttrib(2, 2, GL_FLOAT, GL_FALSE,sizeof(float) * 5, sizeof(float) * 3);                        
+    m_vertexLayout->SetAttrib(0,3,GL_FLOAT,GL_FALSE,sizeof(float)*5,0);//0~3//0=> 점 좌표  1=> 색 설정  2=> 텍스쳐 설정                          
+    m_vertexLayout->SetAttrib(2,2,GL_FLOAT,GL_FALSE,sizeof(float)*5,sizeof(float)*3);//3~5//                    
 
     m_indexBuffer=Buffer::CreateWithData(GL_ELEMENT_ARRAY_BUFFER,GL_STATIC_DRAW,indices,sizeof(float)*36);
 
