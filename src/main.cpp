@@ -25,6 +25,7 @@ void OnCursorPos(GLFWwindow* window, double x, double y) {
     auto context = (Context *)glfwGetWindowUserPointer(window);
     context->MouseMove(x, y);
 }
+
 void OnMouseButton(GLFWwindow* window, int button, int action, int modifier) {
     ImGui_ImplGlfw_MouseButtonCallback(window, button, action, modifier);
     auto context = (Context *)glfwGetWindowUserPointer(window);
@@ -72,8 +73,8 @@ int main(int arg,const char**argv)
         glfwTerminate();
         return -1;
     }
-    	
     glfwMakeContextCurrent(window);
+
     // glad를 활용한 OpenGL 함수 로딩
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         SPDLOG_ERROR("failed to initialize glad");

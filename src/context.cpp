@@ -30,7 +30,6 @@ void Context::ProcessInput(GLFWwindow* window) {
         m_cameraPos -= cameraSpeed * cameraUp;
 }
 
-
 void Context::Reshape(int width, int height) {
     m_width = width;
     m_height = height;
@@ -60,7 +59,7 @@ void Context::MouseMove(double x, double y) {
 void Context::MouseButton(int button, int action, double x, double y) {
     if (button == GLFW_MOUSE_BUTTON_RIGHT) {
         if (action == GLFW_PRESS){
-            // ¸¶¿ì½º Á¶ÀÛ ½ÃÀÛ ½ÃÁ¡¿¡ ÇöÀç ¸¶¿ì½º Ä¿¼­ À§Ä¡ ÀúÀå
+            // ë§ˆìš°ìŠ¤ ì¡°ìž‘ ì‹œìž‘ ì‹œì ì— í˜„ìž¬ ë§ˆìš°ìŠ¤ ì»¤ì„œ ìœ„ì¹˜ ì €ìž¥
             m_prevMousePos = glm::vec2((float)x, (float)y);
             m_cameraControl = true;
         }
@@ -104,7 +103,7 @@ bool Context::Init(){
         -0.5f,  0.5f,  0.5f, 0.0f, 0.0f,
 };
 
-uint32_t indices[] = {
+    uint32_t indices[] = {
       0,  2,  1,  2,  0,  3,
       4,  5,  6,  6,  7,  4,
       8,  9, 10, 10, 11,  8,
@@ -125,12 +124,12 @@ uint32_t indices[] = {
     ShaderPtr vertShader = Shader::CreateFromFile("./shader/texture.vs", GL_VERTEX_SHADER);
     ShaderPtr fragShader = Shader::CreateFromFile("./shader/texture.fs", GL_FRAGMENT_SHADER);
     if (!vertShader || !fragShader)
-    return false;
+        return false;
     SPDLOG_INFO("vertex shader id: {}", vertShader->Get());
     SPDLOG_INFO("fragment shader id: {}", fragShader->Get());
 
     m_program = Program::Create({fragShader, vertShader});
-     if (!m_program)
+    if (!m_program)
         return false;
     SPDLOG_INFO("program id: {}", m_program->Get());
 
@@ -141,8 +140,6 @@ uint32_t indices[] = {
         return false;
     SPDLOG_INFO("image: {}x{}, {} channels", image->GetWidth(), image->GetHeight(), image->GetChannelCount());
 
-    // auto image = Image::Create(512, 512);
-    // image->SetCheckImage(16, 16);
 
     m_texture= Texture::CreateFromImage(image.get());
     auto image2=Image::Load("./image/awesomeface.png");
@@ -157,11 +154,11 @@ uint32_t indices[] = {
 
     m_program->SetUniform("tex", 0);
     m_program->SetUniform("tex2", 1);
-    // xÃàÀ¸·Î -55µµ È¸Àü
+    // xì¶•ìœ¼ë¡œ -55ë„ íšŒì „
     auto model = glm::rotate(glm::mat4(1.0f), glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f));                        
-    // Ä«¸Þ¶ó´Â ¿øÁ¡À¸·ÎºÎÅÍ zÃà ¹æÇâÀ¸·Î -3¸¸Å­ ¶³¾îÁü
+    // ì¹´ë©”ë¼ëŠ” ì›ì ìœ¼ë¡œë¶€í„° zì¶• ë°©í–¥ìœ¼ë¡œ -3ë§Œí¼ ë–¨ì–´ì§
     auto view = glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f));                            
-    // Á¾È¾ºñ 4:3, ¼¼·ÎÈ­°¢ 45µµÀÇ ¿ø±Ù Åõ¿µ
+    // ì¢…íš¡ë¹„ 4:3, ì„¸ë¡œí™”ê° 45ë„ì˜ ì›ê·¼ íˆ¬ì˜
     auto projection = glm::perspective(glm::radians(45.0f), (float)WINDOW_WIDTH / (float)WINDOW_HEIGHT, 0.01f, 10.0f);                                     
     auto transform = projection * view * model;
     m_program->SetUniform("transform",transform);
