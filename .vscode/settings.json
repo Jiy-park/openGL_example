@@ -4,6 +4,6 @@
 },
 "files.associations": {
     "vector": "cpp",
-    "random": "cpp"
+    "xiosbase": "cpp"
 }
 } 
