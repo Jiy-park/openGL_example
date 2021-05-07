@@ -8,6 +8,7 @@ class Image {
 public:
     static ImageUPtr Load(const std::string& filepath);
     static ImageUPtr Create(int width, int height, int channelCount = 4);
+     static ImageUPtr CreateSingleColorImage(int width, int height, const glm::vec4 &color);
     ~Image();
 
     const uint8_t* GetData() const { return m_data; }
@@ -15,6 +16,9 @@ public:
     int GetHeight() const { return m_height; }
     int GetChannelCount() const { return m_channelCount; }
     void SetCheckImage(int gridX, int gridY);
+
+   
+        
 
 private:
     Image() {};

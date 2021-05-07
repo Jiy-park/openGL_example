@@ -4,6 +4,8 @@
 },
 "files.associations": {
     "vector": "cpp",
-    "xiosbase": "cpp"
+    "xiosbase": "cpp",
+    "regex": "cpp",
+    "xstring": "cpp"
 }
 } 
