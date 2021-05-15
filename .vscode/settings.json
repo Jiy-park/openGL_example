@@ -6,6 +6,7 @@
     "vector": "cpp",
     "xiosbase": "cpp",
     "regex": "cpp",
-    "xstring": "cpp"
+    "xstring": "cpp",
+    "memory": "cpp"
 }
 } 
