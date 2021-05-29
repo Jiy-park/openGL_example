@@ -11,6 +11,7 @@ struct Vertex {
     glm::vec3 position;
     glm::vec3 normal;
     glm::vec2 texCoord;
+    glm::vec3 tangent;
 };
 
 CLASS_PTR(Material);
@@ -45,6 +46,10 @@ public:
     MaterialPtr GetMaterial() const { return m_material; }
 
     void Draw(const Program* program) const;
+
+    static void ComputeTangents(std::vector<Vertex>& vertices, const std::vector<uint32_t>& indices);
+    
+   
 
 private:
     Mesh() {}
